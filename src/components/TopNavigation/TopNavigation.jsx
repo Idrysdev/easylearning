@@ -4,23 +4,26 @@ import whiteLogo from '../../assets/images/logo_white.png';
 import blackLogo from '../../assets/images/logo_black.png';
 import "../../assets/css/custom.css";
 import "../../assets/css/bootstrap.min.css";
+import { NavLink } from "react-router-dom"
 
 class TopNavigation extends Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             navBarTitle: "navTitle",
             navBarLogo: [whiteLogo], // object
+            navVariant: "dark",
             navBarBack: "navBackground",
-            navBarItem: "navItem"
+            navBarItem: "navItem",
+            pageTitle:props.title
         }
     }
 
     onScroll = () => {
         if (window.scrollY > 100) {
-            this.setState({ navBarTitle: 'navTitleScroll', navBarLogo: [blackLogo], navBarBack: 'navBackgroundScroll', navBarItem: 'navItemScroll' })
+            this.setState({ navBarTitle: 'navTitleScroll', navBarLogo: [blackLogo], navBarBack: 'navBackgroundScroll', navBarItem: 'navItemScroll', navVariant: 'light' })
         } else if (window.scrollY < 100) {
-            this.setState({ navBarTitle: 'navTitle', navBarLogo: [whiteLogo], navBarBack: 'navBackground', navBarItem: 'navItem' })
+            this.setState({ navBarTitle: 'navTitle', navBarLogo: [whiteLogo], navBarBack: 'navBackground', navBarItem: 'navItem', navVariant: 'dark' })
         }
     }
 
@@ -32,21 +35,21 @@ class TopNavigation extends Component {
     render() {
         return (
             <Fragment>
-
-                <Navbar className={this.state.navBarBack} collapseOnSelect fixed="top" expand="lg" variant="dark">
-                    <Navbar.Brand className={this.state.navBarTitle} href="#home"> <img src={this.state.navBarLogo} /> </Navbar.Brand>
+                 <title>{this.state.pageTitle }</title>   
+                <Navbar className={this.state.navBarBack} collapseOnSelect fixed="top" expand="lg" variant={this.state.navVariant}>
+                    <Navbar.Brand className={this.state.navBarTitle} href="#home"> <NavLink to="/">  <img src={this.state.navBarLogo} /></NavLink>  </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-
+                         
                         </Nav>
                         <Nav>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">HOME</Nav.Link>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">ABOUT</Nav.Link>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">SERVICE</Nav.Link>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">COURSES</Nav.Link>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">PORTFOLIO</Nav.Link>
-                            <Nav.Link className={this.state.navBarItem} href="#deets">CONTACT US</Nav.Link>
+                            <Nav.Link> <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/">HOME</NavLink> </Nav.Link>
+                            <Nav.Link> <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/about">ABOUT</NavLink> </Nav.Link>
+                            <Nav.Link>  <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/service">SERVICE</NavLink> </Nav.Link>
+                            <Nav.Link>  <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/course">COURSES</NavLink> </Nav.Link>
+                            <Nav.Link>  <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/porfolio">PORTFOLIO</NavLink> </Nav.Link>
+                            <Nav.Link>  <NavLink exact activeStyle={{color:'#ffd900'}} className={this.state.navBarItem} to="/contact">CONTACT US</NavLink> </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

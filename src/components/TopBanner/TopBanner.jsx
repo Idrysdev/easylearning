@@ -10,7 +10,7 @@ class TopBanner extends React.Component {
                         <Container className='topContent'>
                             <Row>
                                 <Col className='text-center'>
-                                    <h1 className='topTitle'>EASY LEARNING</h1>
+                                    <h1 className='topTitle'>NOUS CONSTRUISONS VOTRE PRESENCE DANS LE METAVERS</h1>
                                     <h4 className='topSubTitle'>Learn Professionally</h4>
                                     <Button variant="primary">Learn More</Button>
                                 </Col>
@@ -18,7 +18,6 @@ class TopBanner extends React.Component {
                         </Container>
                     </div>
                 </Container>
-
             </Fragment>
         )
     }

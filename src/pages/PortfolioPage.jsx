@@ -5,16 +5,19 @@ import PageTop from '../components/PageTop/PageTop'
 import TopNavigation from '../components/TopNavigation/TopNavigation'
 
 class PortfolioPage extends Component {
-     render() {
-          return (
-              <Fragment>
-                   <TopNavigation />
-                   <PageTop pagetitle="Our Portfolio" />
-                   <AllProjects />
-                   <Footer />
-              </Fragment>
-          )
-     }
+    componentDidMount(){
+        window.scroll(0,0)
+    }
+    render() {
+        return (
+            <Fragment>
+                <TopNavigation title="Our Portfolio" />
+                <PageTop pagetitle="Our Portfolio" />
+                <AllProjects />
+                <Footer />
+            </Fragment>
+        )
+    }
 }
 
 export default PortfolioPage
